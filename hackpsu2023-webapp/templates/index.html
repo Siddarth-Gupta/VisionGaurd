@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Disease Selector</title>
+</head>
+<body>
+
+<form action="/" method="post">
+    <h1>Eye disease type</h1>
+    
+    {% for disease, path in image_paths.items() %}
+        <button type="submit" name="disease_type" value="{{ disease }}">{{ disease }}</button>
+    {% endfor %}
+
+    {% if selected_image %}
+        <img src="{{ url_for('static', filename=selected_image.split('/', 1)[-1]) }}" alt="Selected Image">
+    {% endif %}
+
+    {% if prediction %}
+        <p>Prediction: {{ prediction }}</p>
+    {% endif %}
+</form>
+
+</body>
+</html>
